@@ -1,5 +1,9 @@
+locals {
+  is_cluster_role = var.role_ref_kind == "ClusterRole" ? true : false
+}
+
 resource "kubernetes_cluster_role_binding" "role" {
-  count = var.module_enabled && var.is_cluster_role ? 1 : 0
+  count = var.module_enabled && local.is_cluster_role ? 1 : 0
 
   depends_on = [var.module_depends_on]
 
@@ -28,7 +32,7 @@ resource "kubernetes_cluster_role_binding" "role" {
 }
 
 resource "kubernetes_role_binding" "role" {
-  count = var.module_enabled && var.is_cluster_role ? 0 : 1
+  count = var.module_enabled && local.is_cluster_role ? 0 : 1
 
   depends_on = [var.module_depends_on]
 
