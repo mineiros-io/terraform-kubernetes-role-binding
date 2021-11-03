@@ -7,6 +7,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Remove `is_cluster_role` variable and use `role_ref_kind` instead
+
 ## [0.0.1]
 
 ### Added
